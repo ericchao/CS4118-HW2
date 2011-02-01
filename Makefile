@@ -1,4 +1,4 @@
-HW = hw2
+-include conf.mk
 
 OBJS = \
 	bio.o\
@@ -210,6 +210,14 @@ handin: tarball
 	@echo Please upload $(HW).tar.gz to courseworks. Thank you. 
 
 tarball: realclean
-	tar cf $(HW)-src.tar `find . -type f | grep -v '^\.*$$' | grep -v '/\.git/'`
+	tar cf $(HW)-src.tar `find . -type f | grep -v '^\.*$$' | grep -v '/\.git/' | grep -v '/cscope.out$$' `
 	git diff origin/$(HW) $(HW) > $(HW).patch
 	tar czf $(HW).tar.gz $(HW)-src.tar $(HW).patch
+
+grade: grade-$(HW).sh
+	@echo make clean
+	@make clean || \
+		(echo "'make clean' failed. HINT: Do you have another running instance of xv6?" && exit 1)
+	make
+	QEMU=$(QEMU) QEMUOPTS=$(QEMUOPTS) sh ./grade-$(HW).sh
+
