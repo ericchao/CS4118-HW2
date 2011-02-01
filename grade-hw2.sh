@@ -6,21 +6,15 @@ $make
 
 pts=10
 
-# test1
-echo '\nhw2-test1\n' > xv6.in
-runtest "hw2-test1" "xv6.in" "xv6.out" 5
-if grep 'hw2-test1 succeed' xv6.out > /dev/null
-then
-	pass
-else
-	fail
-fi
+runtest "hw2-test-pause" 5
+runtest "hw2-test-fork" 5
+runtest "hw2-test-skip" 5
+runtest "hw2-test-invalid" 5
+runtest "hw2-test-truncate" 5
+runtest "hw2-test-string" 5
+runtest "hw2-test-pointer" 5
 
 showpart A
-
-pts=5
-
-showpart B
 
 showfinal
 

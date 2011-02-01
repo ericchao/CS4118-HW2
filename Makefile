@@ -132,20 +132,17 @@ mkfs: mkfs.c fs.h
 	gcc -m32 -Werror -Wall -o mkfs mkfs.c
 
 UPROGS=\
-	_cat\
-	_echo\
-	_forktest\
-	_grep\
 	_init\
-	_kill\
-	_ln\
-	_ls\
-	_mkdir\
-	_rm\
 	_sh\
-	_wc\
 	_zombie\
-	_hw2-test1\
+	_hw2-test-pause\
+	_hw2-test-fork\
+	_hw2-test-skip\
+	_hw2-test-invalid\
+	_hw2-test-truncate\
+	_hw2-test-string\
+	_hw2-test-pointer\
+	_strace\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

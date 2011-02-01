@@ -55,15 +55,24 @@ fail () {
 # User tests
 #
 
-# Usage: runtest <prog name> <input file> <output file> <timeout>
+# Usage: runtest <prog name> <timeout>
 runtest () {
-	perl -e "print '$1: '"
+	perl -e "print '$1 ($pts pts): '"
 	t0=`date +%s.%N 2> /dev/null`
 	(
-		exec $QEMU -nographic $QEMUOPTS < $2 > $3
-	) > /dev/null 2> /dev/null &
+		echo "\n$1\n" > xv6.in
+		exec $QEMU -nographic $QEMUOPTS < xv6.in > xv6.out
+	) > /dev/null 2>&1 &
 	pid=$!
-	sleep $4
+	# TODO: Use $2 as time limit.
+	# Don't know how to let qemu exit once a test program exits.
+	sleep $2
 	kill $pid > /dev/null 2>&1
+	if grep "$1 succeeded" xv6.out > /dev/null
+	then
+		pass
+	else
+		fail
+	fi
 }
 
