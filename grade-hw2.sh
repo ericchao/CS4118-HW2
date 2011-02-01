@@ -6,9 +6,10 @@ $make
 
 pts=10
 
-echo '\nstrace\n' > xv6.in
-runtest "strace" "xv6.in" "xv6.out" 5
-if grep "strace succeeded!" xv6.out > /dev/null
+# test1
+echo '\nhw2-test1\n' > xv6.in
+runtest "hw2-test1" "xv6.in" "xv6.out" 5
+if grep 'hw2-test1 succeed' xv6.out > /dev/null
 then
 	pass
 else

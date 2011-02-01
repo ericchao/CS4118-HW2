@@ -143,10 +143,9 @@ UPROGS=\
 	_mkdir\
 	_rm\
 	_sh\
-	_stressfs\
-	_usertests\
 	_wc\
 	_zombie\
+	_hw2-test1\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -219,5 +218,5 @@ grade: grade-$(HW).sh
 	@make clean || \
 		(echo "'make clean' failed. HINT: Do you have another running instance of xv6?" && exit 1)
 	make
-	QEMU=$(QEMU) QEMUOPTS=$(QEMUOPTS) sh ./grade-$(HW).sh
+	QEMU='$(QEMU)' QEMUOPTS='$(QEMUOPTS)' sh ./grade-$(HW).sh
 
