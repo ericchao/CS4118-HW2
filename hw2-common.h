@@ -22,7 +22,9 @@ inline void check_arg_integer(const struct record *r, int v) {
 }
 
 inline void check_arg_pointer(const struct record *r, void *p) {
-  if (r->type != ARG_POINTER || r->value.ptrval != p) {
+  // Pointer values differs form machine to machine. 
+  // Do not count on it. 
+  if (r->type != ARG_POINTER/* || r->value.ptrval != p */) {
     printf(stderr, "actual %p, expected %p\n", r->value.ptrval, p);
     handle_error("error check_arg_pointer");
   }
