@@ -28,7 +28,6 @@ OBJS = \
 	uart.o\
 	vectors.o\
 	vm.o\
-	record.o\
 
 # Cross-compiling (e.g., on Mac OS X)
 #TOOLPREFIX = i386-jos-elf-
@@ -143,7 +142,6 @@ UPROGS=\
 	_hw2-test-truncate\
 	_hw2-test-string\
 	_hw2-test-pointer\
-	_strace\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

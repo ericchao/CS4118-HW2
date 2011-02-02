@@ -1,6 +1,21 @@
 int stdout = 1;
 int stderr = 2;
 
+inline int startrecording() {
+  // Remove this function and implement your own system call. 
+  return 0;
+}
+
+inline int stoprecording() {
+  // Remove this function and implement your own system call. 
+  return 0;
+}
+
+inline int fetchrecords(struct record *records, int num_records) {
+  // Remove this function and implement your own system call. 
+  return 0;
+}
+
 inline void handle_error(const char *msg) {
   printf(stderr, "%s\n", msg);
   exit();
