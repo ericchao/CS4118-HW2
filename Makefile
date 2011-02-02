@@ -28,6 +28,7 @@ OBJS = \
 	uart.o\
 	vectors.o\
 	vm.o\
+	record.o\
 
 # Cross-compiling (e.g., on Mac OS X)
 #TOOLPREFIX = i386-jos-elf-
@@ -200,15 +201,15 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 	$(QEMU) -nographic $(QEMUOPTS) -S $(QEMUGDB)
 
 realclean: clean
-	rm -rf $(HW).tar.gz $(HW)-src.tar $(HW).patch
+	rm -rf $(HW)-$(UNI).tar.gz $(HW)-src.tar $(HW).patch
 
 handin: tarball
-	@echo Please upload $(HW).tar.gz to courseworks. Thank you. 
+	@echo Please upload $(HW)-$(UNI).tar.gz to courseworks. Thank you. 
 
 tarball: realclean
 	tar cf $(HW)-src.tar `find . -type f | grep -v '^\.*$$' | grep -v '/\.git/' | grep -v '/cscope.out$$' `
 	git diff origin/$(HW) $(HW) > $(HW).patch
-	tar czf $(HW).tar.gz $(HW)-src.tar $(HW).patch
+	tar czf $(HW)-$(UNI).tar.gz $(HW)-src.tar $(HW).patch
 
 grade: grade-$(HW).sh
 	@echo make clean
