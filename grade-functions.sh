@@ -64,8 +64,6 @@ runtest () {
 		exec $QEMU -nographic $QEMUOPTS < xv6.in > xv6.out
 	) > /dev/null 2>&1 &
 	pid=$!
-	# TODO: Use $2 as time limit.
-	# Don't know how to let qemu exit once a test program exits.
 	sleep $2
 	kill $pid > /dev/null 2>&1
 	if grep "$1 succeeded" xv6.out > /dev/null
