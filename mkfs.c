@@ -8,9 +8,11 @@
 #include "fs.h"
 #include "stat.h"
 
-int nblocks = 995;
-int ninodes = 200;
-int size = 1024;
+// when changing disk size, adjust nblocks accordingly so that
+// "assert(nblocks + usedblocks == size)" does not fail
+int nblocks = 1994;
+int ninodes = 400;
+int size = 2048; // disk size in blocks
 
 int fsfd;
 struct superblock sb;
@@ -221,12 +223,13 @@ ialloc(ushort type)
 void
 balloc(int used)
 {
-  uchar buf[512];
+  uchar buf[1024];
   int i;
+  uint sz = sizeof(buf)/sizeof(buf[0]);
 
   printf("balloc: first %d blocks have been allocated\n", used);
-  assert(used < 512);
-  bzero(buf, 512);
+  assert(used < sz);
+  bzero(buf, sz);
   for(i = 0; i < used; i++) {
     buf[i/8] = buf[i/8] | (0x1 << (i%8));
   }
