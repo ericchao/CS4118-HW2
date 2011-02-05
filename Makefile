@@ -132,7 +132,10 @@ mkfs: mkfs.c fs.h
 	gcc -m32 -Werror -Wall -o mkfs mkfs.c
 
 UPROGS=\
+	_cat\
+	_echo\
 	_init\
+	_ls\
 	_sh\
 	_zombie\
 	_hw2-test-pause\
