@@ -223,13 +223,12 @@ ialloc(ushort type)
 void
 balloc(int used)
 {
-  uchar buf[1024];
+  uchar buf[512];
   int i;
-  uint sz = sizeof(buf)/sizeof(buf[0]);
 
   printf("balloc: first %d blocks have been allocated\n", used);
-  assert(used < sz);
-  bzero(buf, sz);
+  assert(used < 512*8);
+  bzero(buf, 512);
   for(i = 0; i < used; i++) {
     buf[i/8] = buf[i/8] | (0x1 << (i%8));
   }
