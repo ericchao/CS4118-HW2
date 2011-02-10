@@ -6,6 +6,21 @@
 #include "proc.h"
 
 int
+sys_startrecording(){
+  return 0;
+}
+
+int
+sys_stoprecording(){
+  return 0;
+}
+
+int
+sys_fetchrecords(){
+  return 0;
+}
+
+int
 sys_fork(void)
 {
   return fork();
