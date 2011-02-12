@@ -13,7 +13,7 @@ int stdout = 1;
 
 // simple file system tests
 
-
+/*
 void
 startRecordingTest(void){
 	int result;
@@ -49,6 +49,7 @@ stopRecordingTest(void){
 	}
 	printf(stdout, "stoprecording ok\n");
 }
+*/
 
 
 void
@@ -1467,10 +1468,11 @@ main(int argc, char *argv[])
     exit();
   }
   close(open("usertests.ran", O_CREATE));
-
+/*
 startRecordingTest();
 stopRecordingTest();
 fetchRecordsTest();
+*/
 /*
   sbrktest();
   validatetest();

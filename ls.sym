@@ -12,11 +12,11 @@
 00000000 .debug_loc
 00000000 .debug_ranges
 00000000 ls.c
-00000ac0 buf.918
+00000ac0 buf.920
 00000000 ulib.c
 00000000 printf.c
 00000640 printint
-00000aaf digits.911
+00000aaf digits.913
 00000000 umalloc.c
 00000ad8 freep
 00000ad0 base

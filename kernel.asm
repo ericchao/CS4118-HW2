@@ -13090,16 +13090,16 @@ sys_close(void)
   104aff:	90                   	nop
 
 00104b00 <sys_startrecording>:
-#include "mmu.h"
 #include "proc.h"
+#include "record.h"
 
 int
 sys_startrecording(){
   proc->logging = 1;
   104b00:	65 a1 04 00 00 00    	mov    %gs:0x4,%eax
-#include "param.h"
 #include "mmu.h"
 #include "proc.h"
+#include "record.h"
 
 int
 sys_startrecording(){
@@ -13114,8 +13114,8 @@ sys_startrecording(){
   return 0;
 }
   104b16:	5d                   	pop    %ebp
-#include "mmu.h"
 #include "proc.h"
+#include "record.h"
 
 int
 sys_startrecording(){
@@ -13159,7 +13159,7 @@ sys_stoprecording(){
 00104b50 <sys_fetchrecords>:
 
 int
-sys_fetchrecords(){
+sys_fetchrecords(struct record *records, int num_records){
   104b50:	55                   	push   %ebp
   return 0;
 }
@@ -13169,7 +13169,7 @@ sys_stoprecording(){
 }
 
 int
-sys_fetchrecords(){
+sys_fetchrecords(struct record *records, int num_records){
   104b53:	89 e5                	mov    %esp,%ebp
   return 0;
 }
