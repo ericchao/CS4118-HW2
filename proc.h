@@ -1,3 +1,5 @@
+#include "recordlist.h"
+
 // Segments in proc->gdt.
 // Also known to bootasm.S and trapasm.S
 #define SEG_KCODE 1  // kernel code
@@ -73,6 +75,7 @@ struct proc {
   struct inode *cwd;           // Current directory
   int logging;                 // If non-zero, currently logging syscalls 
   char name[16];               // Process name (debugging)
+  struct recordnode *recordlist;    // List of recorded system calls
 };
 
 // Process memory is laid out contiguously, low addresses first:
