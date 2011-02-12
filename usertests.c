@@ -13,6 +13,44 @@ int stdout = 1;
 
 // simple file system tests
 
+
+void
+startRecordingTest(void){
+	int result;
+ 	printf(stdout, "startrecording test\n");
+ 	result = startrecording();
+ 	if(result != 0){
+		printf(stdout, "startrecording test failed\n");
+		exit();
+	}
+	printf(stdout, "startrecording ok\n");
+}
+
+void
+fetchRecordsTest(void){
+	int result;
+ 	printf(stdout, "fetchrecords test\n");
+ 	result = fetchrecords();
+ 	if(result != 0){
+		printf(stdout, "fetchrecords test failed\n");
+		exit();
+	}
+	printf(stdout, "fetchrecords ok\n");
+}
+
+void
+stopRecordingTest(void){
+	int result;
+ 	printf(stdout, "stoprecording test\n");
+ 	result = stoprecording();
+ 	if(result != 0){
+		printf(stdout, "stoprecording test failed\n");
+		exit();
+	}
+	printf(stdout, "stoprecording ok\n");
+}
+
+
 void
 opentest(void)
 {
@@ -1430,6 +1468,10 @@ main(int argc, char *argv[])
   }
   close(open("usertests.ran", O_CREATE));
 
+startRecordingTest();
+stopRecordingTest();
+fetchRecordsTest();
+/*
   sbrktest();
   validatetest();
 
@@ -1459,6 +1501,7 @@ main(int argc, char *argv[])
   bigdir(); // slow
 
   exectest();
+*/
 
   exit();
 }
