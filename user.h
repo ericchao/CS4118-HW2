@@ -22,6 +22,9 @@ int getpid();
 char* sbrk(int);
 int sleep(int);
 int uptime();
+int startrecording(void);
+int stoprecording(void);
+int fetchrecords(void);
 
 // ulib.c
 int stat(char*, struct stat*);

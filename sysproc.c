@@ -7,12 +7,31 @@
 
 int
 sys_startrecording(){
-  return 0;
+  if(proc->logging == 1)
+  {
+     return -1;
+  }
+
+  else
+  {
+    proc->logging = 1;
+    return 0;
+  }
 }
 
 int
 sys_stoprecording(){
-  return 0;
+  
+  if(proc->logging == 0)
+  {
+     return -1;
+  }
+  
+  else
+  {
+     proc->logging = 0;
+     return 0;
+  }
 }
 
 int
