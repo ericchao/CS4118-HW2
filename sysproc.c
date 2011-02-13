@@ -36,7 +36,9 @@ sys_stoprecording(){
 }
 
 int
-sys_fetchrecords(struct record *records, int num_records){
+sys_fetchrecords(struct record *records, int num_records)
+{
+  print_records(records, num_records);
   return 0;
 }
 

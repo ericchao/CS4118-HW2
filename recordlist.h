@@ -1,40 +1,58 @@
 #include "record.h"
+//#include "proc.h"
 #define NULL (void*)0
 
-/*
+
 typedef struct rnode recordnode;
+
+static recordnode recordlist;
 
 struct rnode
 {
 	struct record *rec;
 	struct rnode *next;
 };
-*/
 
-static void add_record(struct record* rlist, struct record* re)
+static void add_record(recordnode* rlist, struct record* re)
 {
-	struct record *cur = rlist;
+	recordnode *cur = rlist;
 	while(cur->next != NULL)
 	{
 		cur = cur->next;
 	}
 	
-	struct record *newnode = (struct record*)kalloc();
-	newnode->type = re->type;
-	newnode->value = re->value;
+	recordnode *newnode = (recordnode*)kalloc();
+	newnode->rec = re;
 	newnode->next = NULL;
 	cur->next = newnode;
 }
 
-static void print_records(struct record* rlist)
+static int print_records(struct record *records, int num_records)
 {
-	struct record *cur = rlist;
-
-	while(cur->next != NULL)
+	recordnode *cur = proc->recordlist;
+	int count = 0;
+	
+	if (records != NULL)
 	{
-		cprintf("%s: %s", cur->type, cur->value);
-		cur = cur->next;
+		while(cur->next != NULL)
+		{
+			if (count < num_records)
+			{
+				records[count] = cur->rec;
+				cur = cur->next;
+				count++;
+			}
+			else
+				break;
+		}
 	}
-	cprintf("%s: %s", cur->type, cur->value);
-
+	else
+	{
+		while (cur->next != NULL)
+		{
+			count++;
+		}
+		count++;
+	}
+	return count;
 }

@@ -8,7 +8,6 @@ enum recordtype { SYSCALL_NO, ARG_INTEGER, ARG_POINTER, ARG_STRING, RET_VALUE };
 
 struct record {
   enum recordtype type;
-  struct record *next;
   union recordvalue {
     int intval;
     void *ptrval;
