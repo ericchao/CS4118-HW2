@@ -3,7 +3,7 @@
 #define NULL (void*)0
 
 
-//typedef struct rnode recordnode;
+typedef struct rnode recordnode;
 
 struct rnode
 {

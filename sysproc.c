@@ -5,7 +5,8 @@
 #include "mmu.h"
 #include "proc.h"
 #include "record.h"
-#define NULL (void*)0
+
+
 
 int
 sys_startrecording(){
@@ -39,49 +40,65 @@ sys_stoprecording(){
 int
 sys_fetchrecords(struct record *records, int num_records)
 {
-<<<<<<< HEAD
-  //return print_records(records, num_records);
-  return 0;
-=======
-  //if first arg is null return total number of records (not num_records) 
 
-  int records = 0;
-
-  struct recordNode *cur = proc->recordlist;
-
-  while(cur->next != NULL)
-  {
-    records++
-  }
-
-    return records;
-
-  //if array not null - return that 
-
-  if(sizeof (records)) < 0)
-  {
-   return -1;
-  }
-
-  else
-  {
-    cur = proc->recordlist;
-    int k = 0;
-    
-    for ( k = 0; k < records && i <num_records; i++)
-    {
-       
-       recorded[k] = *cur->rec;
-
-       cur = cur->next;
-    }
-    return 0;
-  }
 
  // print_records(records, num_records);
-  //return 0;
->>>>>>> a711c82573e556a4c2fac7f60252d602efbec1d0
+  return 0;
+
 }
+
+typedef struct rnode recordnode;
+
+struct rnode
+{
+	struct record *rec;
+	struct rnode *next;
+};
+
+void add_record(struct rnode* rlist, struct record* re)
+{
+	struct rnode *cur = rlist;
+	while(cur->next != NULL)
+	{
+		cur = cur->next;
+	}
+	
+	struct rnode *newnode = (struct rnode*)kalloc();
+	newnode->rec = re;
+	newnode->next = NULL;
+	cur->next = newnode;
+}
+
+int print_records(struct record *records, int num_records)
+{
+	struct rnode *cur = proc->recordlist;
+	int count = 0;
+	
+	if (records != NULL)
+	{
+		while(cur->next != NULL)
+		{
+			if (count < num_records)
+			{
+				records[count] = *(cur->rec);
+				cur = cur->next;
+				count++;
+			}
+			else
+				break;
+		}
+	}
+	else
+	{
+		while (cur->next != NULL)
+		{
+			count++;
+		}
+		count++;
+	}
+	return count;
+}
+
 
 int
 sys_fork(void)
