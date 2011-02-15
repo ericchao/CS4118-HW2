@@ -54,8 +54,25 @@ sys_fetchrecords(struct record *records, int num_records)
 
   //if array not null - return that 
 
-   
- 
+  if(sizeof (records)) < 0)
+  {
+   return -1;
+  }
+
+  else
+  {
+    cur = proc->recordlist;
+    int k = 0;
+    
+    for ( k = 0; k < records && i <num_records; i++)
+    {
+       
+       recorded[k] = *cur->rec;
+
+       cur = cur->next;
+    }
+    return 0;
+  }
 
  // print_records(records, num_records);
   //return 0;
