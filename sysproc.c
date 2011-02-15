@@ -4,9 +4,14 @@
 #include "param.h"
 #include "mmu.h"
 #include "proc.h"
+<<<<<<< HEAD
 #include "record.h"
 
 
+=======
+#include "recordlist.c"
+#define NULL (void*)0
+>>>>>>> 3b2cb5cc4164eaf76bfe2c78ef3f917709156f97
 
 int
 sys_startrecording(){
@@ -18,6 +23,7 @@ sys_startrecording(){
   else
   {
     proc->logging = 1;
+    add_record(NULL, NULL);
     return 0;
   }
 }
@@ -40,6 +46,7 @@ sys_stoprecording(){
 int
 sys_fetchrecords(struct record *records, int num_records)
 {
+<<<<<<< HEAD
 
 
  // print_records(records, num_records);
@@ -97,6 +104,12 @@ int print_records(struct record *records, int num_records)
 		count++;
 	}
 	return count;
+=======
+  return print_records(records, num_records);
+  //return 0;
+  //if first arg is null return total number of records (not num_records) 
+
+>>>>>>> 3b2cb5cc4164eaf76bfe2c78ef3f917709156f97
 }
 
 

@@ -1,16 +1,21 @@
-#include "record.h"
 #include "defs.h"
+#include "recordlist.h"
 #define NULL (void*)0
 
 
+<<<<<<< HEAD
 typedef struct rnode recordnode;
 
+=======
+//typedef struct rnode recordnode;
+/*
+>>>>>>> 3b2cb5cc4164eaf76bfe2c78ef3f917709156f97
 struct rnode
 {
 	struct record *rec;
 	struct rnode *next;
 };
-
+*/
 void add_record(struct rnode* rlist, struct record* re)
 {
 	struct rnode *cur = rlist;
