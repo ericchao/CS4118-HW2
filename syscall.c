@@ -5,7 +5,8 @@
 #include "proc.h"
 #include "x86.h"
 #include "syscall.h"
-#include "recordlist.h"
+#include "record.h"
+//#include "recordlist.h"
 
 
 // User code makes a system call with INT T_SYSCALL.

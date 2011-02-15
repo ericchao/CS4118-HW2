@@ -4,7 +4,7 @@
 #include "param.h"
 #include "mmu.h"
 #include "proc.h"
-#include "record.h"
+//#include "recordlist.h"
 
 int
 sys_startrecording(){
@@ -38,7 +38,7 @@ sys_stoprecording(){
 int
 sys_fetchrecords(struct record *records, int num_records)
 {
-  print_records(records, num_records);
+  //return print_records(records, num_records);
   return 0;
 }
 
