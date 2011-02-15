@@ -6,6 +6,8 @@ struct pipe;
 struct proc;
 struct spinlock;
 struct stat;
+struct record;
+struct rnode;
 
 // bio.c
 void            binit(void);
@@ -164,6 +166,10 @@ int             loaduvm(pde_t*, char*, struct inode *, uint, uint);
 pde_t*          copyuvm(pde_t*,uint);
 void            switchuvm(struct proc*);
 void            switchkvm();
+
+//recordlist.c
+void		add_record(struct rnode*, struct record*);
+int		print_records(struct record*, int);
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))

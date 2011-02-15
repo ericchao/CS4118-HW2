@@ -1,11 +1,9 @@
 #include "record.h"
-//#include "proc.h"
+#include "defs.h"
 #define NULL (void*)0
 
 
-typedef struct rnode recordnode;
-
-static recordnode recordlist;
+//typedef struct rnode recordnode;
 
 struct rnode
 {
@@ -13,23 +11,23 @@ struct rnode
 	struct rnode *next;
 };
 
-static void add_record(recordnode* rlist, struct record* re)
+void add_record(struct rnode* rlist, struct record* re)
 {
-	recordnode *cur = rlist;
+	struct rnode *cur = rlist;
 	while(cur->next != NULL)
 	{
 		cur = cur->next;
 	}
 	
-	recordnode *newnode = (recordnode*)kalloc();
+	struct rnode *newnode = (struct rnode*)kalloc();
 	newnode->rec = re;
 	newnode->next = NULL;
 	cur->next = newnode;
 }
 
-static int print_records(struct record *records, int num_records)
+int print_records(struct record *records, int num_records)
 {
-	recordnode *cur = proc->recordlist;
+	struct rnode *cur = proc->recordlist;
 	int count = 0;
 	
 	if (records != NULL)
@@ -38,7 +36,7 @@ static int print_records(struct record *records, int num_records)
 		{
 			if (count < num_records)
 			{
-				records[count] = cur->rec;
+				records[count] = *(cur->rec);
 				cur = cur->next;
 				count++;
 			}
