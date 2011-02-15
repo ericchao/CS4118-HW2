@@ -4,7 +4,7 @@
 #include "param.h"
 #include "mmu.h"
 #include "proc.h"
-#include "record.h"
+#include "recordlist.c"
 #define NULL (void*)0
 
 int
@@ -17,6 +17,7 @@ sys_startrecording(){
   else
   {
     proc->logging = 1;
+    add_record(NULL, NULL);
     return 0;
   }
 }
@@ -39,31 +40,10 @@ sys_stoprecording(){
 int
 sys_fetchrecords(struct record *records, int num_records)
 {
-<<<<<<< HEAD
-  //return print_records(records, num_records);
-  return 0;
-=======
+  return print_records(records, num_records);
+  //return 0;
   //if first arg is null return total number of records (not num_records) 
 
-  int records = 0;
-
-  struct recordNode *cur = proc->recordlist;
-
-  while(cur->next != NULL)
-  {
-    records++
-  }
-
-    return records;
-
-  //if array not null - return that 
-
-   
- 
-
- // print_records(records, num_records);
-  //return 0;
->>>>>>> a711c82573e556a4c2fac7f60252d602efbec1d0
 }
 
 int
